@@ -34,11 +34,6 @@ Student Performance Dataset from Kaggle
 1. Clone the repository
 2. Create virtual environment
 3. Install requirements
-
-```bash
-pip install -r requirements.txt
-```
-
 4. Configure `.env`
 5. Run
 
