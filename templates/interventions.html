@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Intervention Records
+</h2>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        Intervention History
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table
+                class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Counselor</th>
+                        <th>Intervention</th>
+                        <th>Outcome</th>
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for row in interventions %}
+
+                    <tr>
+
+                        <td>
+                            {{ row.student_id }}
+                        </td>
+                        <td>
+                            {{ row.student_name }}
+                        </td>
+
+                        <td>
+                            {{ row.counselor_name }}
+                        </td>
+
+                        <td>
+                            {{ row.intervention_type }}
+                        </td>
+
+                        <td>
+
+                            {% if row.outcome == "Retained" %}
+
+                                <span class="badge bg-success">
+                                    Retained
+                                </span>
+
+                            {% elif row.outcome == "Dropped Out" %}
+
+                                <span class="badge bg-danger">
+                                    Dropped Out
+                                </span>
+
+                            {% elif row.outcome == "Improved Performance" %}
+
+                                <span class="badge bg-primary">
+                                    Improved
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Observation
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ row.intervention_date }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+{% endblock %}

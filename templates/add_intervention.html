@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+
+    <div class="card-header bg-primary text-white">
+        Add Intervention
+    </div>
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Student ID
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    value="{{ student_id }}"
+                    readonly>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Counselor Name
+                </label>
+
+                <input
+                    type="text"
+                    name="counselor_name"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Intervention Type
+                </label>
+
+                <select
+                    name="intervention_type"
+                    class="form-select"
+                    required>
+
+                    <option value="">Select</option>
+
+                    <option>
+                        Academic Mentoring
+                    </option>
+
+                    <option>
+                        Counseling Session
+                    </option>
+
+                    <option>
+                        Parent Meeting
+                    </option>
+
+                    <option>
+                        Financial Aid Support
+                    </option>
+
+                    <option>
+                        Attendance Monitoring
+                    </option>
+
+                    <option>
+                        Career Guidance
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Remarks
+                </label>
+
+                <textarea
+                    name="remarks"
+                    class="form-control"
+                    rows="4"></textarea>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Outcome
+                </label>
+
+                <select
+                    name="outcome"
+                    class="form-select"
+                    required>
+
+                    <option value="">
+                        Select Outcome
+                    </option>
+
+                    <option>
+                        Under Observation
+                    </option>
+
+                    <option>
+                        Improved Performance
+                    </option>
+
+                    <option>
+                        Retained
+                    </option>
+
+                    <option>
+                        Dropped Out
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-success">
+
+                Save Intervention
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+{% endblock %}

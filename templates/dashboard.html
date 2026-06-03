@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    AI Student Dropout Prediction Dashboard
+</h2>
+
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5>Total Students</h5>
+                <h2>{{ total_students }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center shadow">
+            <div class="card-body">
+                <h5>Retention Rate</h5>
+                <h2>{{ retention_rate }}%</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow border-danger">
+            <div class="card-body">
+                <h5>High Risk</h5>
+                <h2 class="text-danger">
+                    {{ high_risk }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow border-warning">
+            <div class="card-body">
+                <h5>Medium Risk</h5>
+                <h2 class="text-warning">
+                    {{ medium_risk }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow border-success">
+            <div class="card-body">
+                <h5>Low Risk</h5>
+                <h2 class="text-success">
+                    {{ low_risk }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-6 mb-4">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-dark text-white">
+                Intervention Statistics
+            </div>
+
+            <div class="card-body">
+
+                <h3>
+                    {{ interventions }}
+                </h3>
+
+                <p>
+                    Total Interventions Conducted
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6 mb-4">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-primary text-white">
+                Recommended Actions
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>
+                        <b>High Risk:</b>
+                        Immediate counseling and parent meeting
+                    </li>
+
+                    <li>
+                        <b>Medium Risk:</b>
+                        Academic mentoring and attendance monitoring
+                    </li>
+
+                    <li>
+                        <b>Low Risk:</b>
+                        Routine observation
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow">
+
+    <div class="card-header bg-danger text-white">
+
+        Top At-Risk Students
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Student ID</th>
+                        <th>Probability (%)</th>
+                        <th>Risk Level</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for row in top_students %}
+
+                    <tr>
+
+                        <td>
+                            {{ row.student_id }}
+                        </td>
+
+                        <td>
+                            {{ row.dropout_probability }}
+                        </td>
+
+                        <td>
+                            {{ row.risk_level }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-3">
+    <div class="card text-center shadow">
+        <div class="card-body">
+            <h5>Retention Rate</h5>
+            <h2>{{ retention_rate }}%</h2>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

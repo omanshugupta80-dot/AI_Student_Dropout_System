@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Student Risk Predictions</h2>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        Prediction Results
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Probability (%)</th>
+                        <th>Risk Level</th>
+                        <th>Risk Factors</th>
+                        <th>Action</th>
+                        <th>Recommended Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for row in predictions %}
+
+                    <tr>
+
+                        <td>{{ row.student_id }}</td>
+                        <td>{{ row.student_name }}</td>
+
+                        <td>
+                            {{ row.dropout_probability }}%
+                        </td>
+
+                        <td>
+                            {{ row.risk_factors }}
+                        </td>
+
+                        <td>
+
+                            {% if row.risk_level == "High Risk" %}
+
+                                <span class="badge bg-danger">
+                                    High Risk
+                                </span>
+
+                            {% elif row.risk_level == "Medium Risk" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Medium Risk
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Low Risk
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <a href="/add_intervention/{{ row.student_id }}"
+                               class="btn btn-primary btn-sm">
+
+                                Add Intervention
+
+                            </a>
+
+                        </td>
+                        <td>
+                            {{ row.recommendation }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="mt-3">
+
+    <a href="/students" class="btn btn-secondary">
+        Back to Students
+    </a>
+
+</div>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+{% endblock %}
