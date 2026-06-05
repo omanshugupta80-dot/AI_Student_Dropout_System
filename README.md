@@ -28,18 +28,6 @@ The AI Student Dropout Prediction System is a machine learning-based web applica
 * Bootstrap 5
 * HTML/CSS
 
-## Project Structure
-
-AI_Student_Dropout_System/
-
- app.py
- database/
- model/
- static/
- templates/
- dataset/
- .env
- README.md
 
 ## Workflow
 
