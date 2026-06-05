@@ -1,0 +1,51 @@
+body{
+    background-color:#121212;
+    color:#ffffff;
+}
+
+.navbar{
+    background:#0d1117 !important;
+    box-shadow:0 4px 15px rgba(0,0,0,.5);
+}
+
+.card{
+    background:#1e1e1e;
+    color:white;
+    border:none;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+
+.card-header{
+    border:none;
+}
+
+.table{
+    color:white;
+}
+
+.table td,
+.table th{
+    background:#1e1e1e !important;
+    color:white !important;
+}
+
+.table-dark{
+    background:#0d1117 !important;
+}
+
+.btn{
+    border-radius:10px;
+}
+
+h1,h2,h3,h4,h5{
+    color:white;
+}
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        #210656,
+        #2e0d64
+    );
+}

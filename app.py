@@ -45,6 +45,16 @@ def dashboard():
         WHERE risk_level='Low Risk'
     """)
     low_risk = cursor.fetchone()["total"]
+    
+    at_risk = high_risk + medium_risk
+
+    if total_students > 0:
+        retention_rate = round(
+            ((total_students - at_risk) / total_students) * 100,
+            2
+        )
+    else:
+     retention_rate = 0
 
     # Interventions
     cursor.execute("""
@@ -55,9 +65,13 @@ def dashboard():
 
     # Top Risk Students
     cursor.execute("""
-        SELECT *
-        FROM predictions
-        ORDER BY dropout_probability DESC
+        SELECT
+            p.*,
+            s.student_name
+        FROM predictions p
+        JOIN students s
+            ON p.student_id = s.student_id
+        ORDER BY p.dropout_probability DESC
         LIMIT 10
     """)
 
@@ -83,7 +97,8 @@ def dashboard():
         medium_risk=medium_risk,
         low_risk=low_risk,
         interventions=interventions,
-        top_students=top_students
+        top_students=top_students,
+        retention_rate=retention_rate
     )
     
 # ==========================

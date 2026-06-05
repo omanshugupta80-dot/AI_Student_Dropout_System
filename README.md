@@ -1,20 +1,20 @@
-# AI-Based Student Dropout Prediction System
+# AI Student Dropout Prediction System
 
 ## Overview
 
-This project predicts students who are at risk of dropping out using Machine Learning and provides intervention recommendations for counselors.
+The AI Student Dropout Prediction System is a machine learning-based web application developed using Flask, Python, MySQL, and Bootstrap. The system helps educational institutions identify students who are at risk of dropping out and supports timely interventions to improve retention rates.
 
 ## Features
 
-* Student Management
-* AI Risk Prediction
-* Risk Classification
-* Risk Factor Analysis
-* Recommended Interventions
-* Intervention Tracking
-* Outcome Tracking
-* Analytics Dashboard
+* Student Management Module
+* Machine Learning Based Dropout Prediction
+* Risk Classification (High, Medium, Low)
+* Student Risk Dashboard
+* Retention Rate Analysis
+* Risk Distribution Visualization
+* Intervention Tracking System
 * MySQL Database Integration
+* Responsive Bootstrap User Interface
 
 ## Technologies Used
 
@@ -23,33 +23,43 @@ This project predicts students who are at risk of dropping out using Machine Lea
 * MySQL
 * Pandas
 * Scikit-Learn
-* Bootstrap
+* Joblib
+* Matplotlib
+* Bootstrap 5
+* HTML/CSS
 
-## Dataset
+## Project Structure
 
-Student Performance Dataset from Kaggle
+AI_Student_Dropout_System/
 
-## How to Run
+ app.py
+ database/
+ model/
+ static/
+ templates/
+ dataset/
+ .env
+ README.md
 
-1. Clone the repository
-2. Create virtual environment
-3. Install requirements
-4. Configure `.env`
-5. Run
+## Workflow
 
-```bash
-python app.py
-```
+1. Add student records.
+2. Predict dropout probability using the trained machine learning model.
+3. Categorize students into High, Medium, or Low Risk groups.
+4. View analytics through the dashboard.
+5. Record interventions and counseling activities.
+6. Monitor student retention performance.
 
-6. Open
+## Future Enhancements
 
-```text
-http://127.0.0.1:5000
-```
+* Email Notifications
+* Automated Student Alerts
+* Advanced Analytics Dashboard
+* Role-Based Login System
+* Cloud Deployment
 
-## Future Scope
+## Author
 
-* Real-time analytics
-* Email alerts
-* PDF reports
-* Advanced ML models
+Omanshu Gupta
+
+Bachelor of Technology (Computer Science)

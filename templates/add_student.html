@@ -1,63 +1,221 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Student</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>Add Student</h1>
+{% block content %}
 
-<form method="POST">
+<div class="row justify-content-center">
 
-    <label>Student ID</label><br>
-    <input type="text" name="student_id" required><br><br>
+    <div class="col-md-8">
 
-    <label>Student Name</label><br>
-    <input type="text" name="student_name" required><br><br>
+        <div class="card shadow">
 
-    <label>Gender</label><br>
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Add New Student</h4>
+            </div>
 
-    <select name="gender" required>
-        <option value="">Select Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-    </select>
+            <div class="card-body">
 
-    <label>Age</label><br>
-    <input type="number" name="age" required><br><br>
+                <form method="POST">
 
-    <label>Tuition Fees Up To Date</label><br>
-    <select name="tuition_fees">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select><br><br>
+                    <div class="row">
 
-    <label>Scholarship Holder</label><br>
-    <select name="scholarship">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select><br><br>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">
+                                Student ID
+                            </label>
 
-    <label>Admission Grade</label><br>
-    <input type="number" step="0.01" name="admission_grade" required><br><br>
+                            <input
+                                type="text"
+                                name="student_id"
+                                class="form-control"
+                                required
+                            >
+                        </div>
 
-    <label>1st Sem Approved Units</label><br>
-    <input type="number" name="first_sem" required><br><br>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">
+                                Student Name
+                            </label>
 
-    <label>2nd Sem Approved Units</label><br>
-    <input type="number" name="second_sem" required><br><br>
+                            <input
+                                type="text"
+                                name="student_name"
+                                class="form-control"
+                                required
+                            >
+                        </div>
 
-    <button type="submit">
-        Save Student
-    </button>
+                    </div>
 
-</form>
+                    <div class="row">
 
-<br>
+                        <div class="col-md-6 mb-3">
 
-<a href="/students">View Students</a>
+                            <label class="form-label">
+                                Gender
+                            </label>
 
-</body>
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
-</html>
+                            <select
+                                name="gender"
+                                class="form-select"
+                                required
+                            >
+                                <option value="">
+                                    Select Gender
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Age
+                            </label>
+
+                            <input
+                                type="number"
+                                name="age"
+                                class="form-control"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Tuition Fees Up To Date
+                            </label>
+
+                            <select
+                                name="tuition_fees"
+                                class="form-select"
+                            >
+                                <option value="1">
+                                    Yes
+                                </option>
+
+                                <option value="0">
+                                    No
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Scholarship Holder
+                            </label>
+
+                            <select
+                                name="scholarship"
+                                class="form-select"
+                            >
+                                <option value="1">
+                                    Yes
+                                </option>
+
+                                <option value="0">
+                                    No
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                Admission Grade
+                            </label>
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                name="admission_grade"
+                                class="form-control"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                1st Sem Approved Units
+                            </label>
+
+                            <input
+                                type="number"
+                                name="first_sem"
+                                class="form-control"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label">
+                                2nd Sem Approved Units
+                            </label>
+
+                            <input
+                                type="number"
+                                name="second_sem"
+                                class="form-control"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex gap-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                        >
+                            Save Student
+                        </button>
+
+                        <a
+                            href="/students"
+                            class="btn btn-secondary"
+                        >
+                            Back to Students
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

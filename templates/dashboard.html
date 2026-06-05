@@ -2,9 +2,12 @@
 
 {% block content %}
 
-<h2 class="mb-4">
-    AI Student Dropout Prediction Dashboard
-</h2>
+<div class="hero p-4 mb-4 rounded shadow">
+    <h1>AI Student Dropout Prediction System</h1>
+    <p class="mb-0">
+        Predict • Analyze • Retain
+    </p>
+</div>
 
 <div class="row">
 
@@ -17,7 +20,7 @@
         </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-3 mb-3">
         <div class="card text-center shadow">
             <div class="card-body">
                 <h5>Retention Rate</h5>
@@ -26,7 +29,7 @@
         </div>
     </div>
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-2 mb-3">
         <div class="card text-center shadow border-danger">
             <div class="card-body">
                 <h5>High Risk</h5>
@@ -37,7 +40,7 @@
         </div>
     </div>
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-2 mb-3">
         <div class="card text-center shadow border-warning">
             <div class="card-body">
                 <h5>Medium Risk</h5>
@@ -48,7 +51,7 @@
         </div>
     </div>
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-2 mb-3">
         <div class="card text-center shadow border-success">
             <div class="card-body">
                 <h5>Low Risk</h5>
@@ -67,19 +70,18 @@
 
         <div class="card shadow">
 
-            <div class="card-header bg-dark text-white">
-                Intervention Statistics
+            <div class="card-header bg-primary text-white">
+                Risk Distribution Chart
             </div>
 
-            <div class="card-body">
+            <div class="card-body text-center">
 
-                <h3>
-                    {{ interventions }}
-                </h3>
-
-                <p>
-                    Total Interventions Conducted
-                </p>
+                <img
+                    src="{{ url_for('static', filename='risk_chart.png') }}"
+                    class="img-fluid"
+                    alt="Risk Chart"
+                    style="max-height:400px;"
+                >
 
             </div>
 
@@ -87,11 +89,11 @@
 
     </div>
 
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6">
 
-        <div class="card shadow">
+        <div class="card shadow mb-4">
 
-            <div class="card-header bg-primary text-white">
+            <div class="card-header bg-success text-white">
                 Recommended Actions
             </div>
 
@@ -100,21 +102,39 @@
                 <ul>
 
                     <li>
-                        <b>High Risk:</b>
-                        Immediate counseling and parent meeting
+                        <strong>High Risk:</strong>
+                        Immediate Counseling and Parent Meeting
                     </li>
 
                     <li>
-                        <b>Medium Risk:</b>
-                        Academic mentoring and attendance monitoring
+                        <strong>Medium Risk:</strong>
+                        Academic Mentoring and Attendance Monitoring
                     </li>
 
                     <li>
-                        <b>Low Risk:</b>
-                        Routine observation
+                        <strong>Low Risk:</strong>
+                        Routine Monitoring
                     </li>
 
                 </ul>
+
+            </div>
+
+        </div>
+
+        <div class="card shadow">
+
+            <div class="card-header bg-dark text-white">
+                Intervention Statistics
+            </div>
+
+            <div class="card-body text-center">
+
+                <h2>{{ interventions }}</h2>
+
+                <p>
+                    Total Interventions Conducted
+                </p>
 
             </div>
 
@@ -127,9 +147,7 @@
 <div class="card shadow">
 
     <div class="card-header bg-danger text-white">
-
         Top At-Risk Students
-
     </div>
 
     <div class="card-body">
@@ -141,11 +159,10 @@
                 <thead class="table-dark">
 
                     <tr>
-
                         <th>Student ID</th>
+                        <th>Student Name</th>
                         <th>Probability (%)</th>
                         <th>Risk Level</th>
-
                     </tr>
 
                 </thead>
@@ -156,16 +173,34 @@
 
                     <tr>
 
-                        <td>
-                            {{ row.student_id }}
-                        </td>
+                        <td>{{ row.student_id }}</td>
+
+                        <td>{{ row.student_name }}</td>
+
+                        <td>{{ row.dropout_probability }}</td>
 
                         <td>
-                            {{ row.dropout_probability }}
-                        </td>
 
-                        <td>
-                            {{ row.risk_level }}
+                            {% if row.risk_level == "High Risk" %}
+
+                                <span class="badge bg-danger">
+                                    High Risk
+                                </span>
+
+                            {% elif row.risk_level == "Medium Risk" %}
+
+                                <span class="badge bg-warning text-dark">
+                                    Medium Risk
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-success">
+                                    Low Risk
+                                </span>
+
+                            {% endif %}
+
                         </td>
 
                     </tr>
@@ -180,15 +215,6 @@
 
     </div>
 
-</div>
-
-<div class="col-md-3">
-    <div class="card text-center shadow">
-        <div class="card-body">
-            <h5>Retention Rate</h5>
-            <h2>{{ retention_rate }}%</h2>
-        </div>
-    </div>
 </div>
 
 {% endblock %}
